@@ -1,0 +1,3 @@
+[submodule "bidpom"]
+	path = bidpom
+	url = git://github.com/davehunt/bidpom.git
