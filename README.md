@@ -64,15 +64,15 @@ WebDriver does not need a Selenium Server or Grid to run so these examples bypas
 
 An example of running all tests without a Selenium Server:
 
-	py.test --driver=firefox --credentials=/credentials.yaml --destructive .
+	py.test --driver=firefox --credentials=./credentials.yaml --destructive .
 	
 An example of running all of the tests in one file:
 
-	py.test --driver=firefox --credentials=/credentials.yaml tests/test_details_page.py
+	py.test --driver=firefox --credentials=./credentials.yaml tests/test_create_team_pad.py
 	
 An example of running one test in a file:
 
-	py.test --driver=firefox --credentials=/credentials.yaml tests/test_details_page.py -k test_that_external_link_leads_to_etherpad_website
+	py.test --driver=firefox --credentials=./credentials.yaml tests/test_create_team_pad.py -k test_that_user_can_create_team_pad
 
 For information about running tests against a Selenium Grid or moz-grid-config see the section in this document about setting up moz-grid-config.
 
