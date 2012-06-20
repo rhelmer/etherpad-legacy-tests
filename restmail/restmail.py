@@ -76,6 +76,6 @@ class Email():
         # This returns the link for verifying the email address of a new account
 
         body = self.json['text']
-        start = body.find('https')
+        start = body.find('https://browserid.org/verify')
         end = body.find('\n\nIf')
         return body[start:end]
