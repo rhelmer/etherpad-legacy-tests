@@ -12,7 +12,7 @@ from page import Page
 class TeamPad(Page):
 
     _signinbutton_locator = (By.CSS_SELECTOR, '#signInButton')
-    _success_message = (By.CSS_SELECTOR, '#welcome-msg')
+    _success_message_locator = (By.CSS_SELECTOR, '#welcome-msg')
     _page_title = 'MoPad: Sign In'
 
     def go_to_teampad_page(self, teampad):
@@ -37,15 +37,14 @@ class TeamPad(Page):
         from browserid.pages.webdriver.sign_in import SignIn
         return SignIn(self.selenium, self.timeout, expect=expect)
 
-    def click_logout(self):
-        # FIXME
-        # no convenient id, link is /ep/account/sign-out
-        pass
-
-    def reload(self):
-        self.selenium.refresh()
+    @property
+    def logout_link(self):
+        return '%s/%s' % (self.base_url, 'ep/account/sign-out')
 
     @property
     def is_logged_in(self):
-        return self.is_element_visible(*self._success_message)
+        return self.is_element_visible(*self._success_message_locator)
 
+    @property
+    def is_logged_out(self):
+        return self.is_element_visible(*self._signinbutton_locator)
